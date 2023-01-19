@@ -17,19 +17,14 @@ import {
   InputGroupText,
   InputGroup,
   Media,
-  NavbarBrand,
   Navbar,
   NavItem,
   NavLink,
   Nav,
-  Progress,
-  Table,
   Container,
   Row,
   Col
 } from "reactstrap";
-
-var ps;
 
 const Sidebar = (props) => {
   const [collapseOpen, setCollapseOpen] = useState();
@@ -56,7 +51,6 @@ const Sidebar = (props) => {
             onClick={closeCollapse}
             activeClassName="active"
             style={{color:"white"}}
-            
           >
             <i className={prop.icon} />
             {prop.name}
@@ -66,7 +60,7 @@ const Sidebar = (props) => {
     });
   };
 
-  const { bgColor, routes, logo } = props;
+  const { routes, logo } = props;
   let navbarBrandProps;
   if (logo && logo.innerLink) {
     navbarBrandProps = {
@@ -85,7 +79,7 @@ const Sidebar = (props) => {
       className="navbar-vertical fixed-left navbar-light"
       expand="md"
       id="sidenav-main"
-      style={{backgroundColor: '#1E2772', color: 'white'}}
+      style={{backgroundColor: '#4B0082', color: 'white'}}
     >
       <Container fluid>
         {/* Toggler */}
@@ -97,19 +91,9 @@ const Sidebar = (props) => {
           <span className="navbar-toggler-icon" />
         </button>
         {/* Brand */}
-        {"Place A Logo Here"}
-        {/* {logo ? (
-          <NavbarBrand className="pt-0" {...navbarBrandProps}>
-            <img
-              alt={logo.imgAlt}
-              className="navbar-brand-img"
-              src={logo.imgSrc}
-            />
-          </NavbarBrand>
-        ) : null} */}
-        {/* User */}
+        {"Inventory Management System"}
         <Nav className="align-items-center d-md-none"
-          style={{color: 'white'}}
+          style={{color: 'black'}}
         >
           <UncontrolledDropdown nav>
             <DropdownToggle nav className="nav-link-icon">
@@ -213,39 +197,7 @@ const Sidebar = (props) => {
           </Form>
           {/* Navigation */}
           <Nav navbar>{createLinks(routes)}</Nav>
-          {/* Divider */}
-          {/* <hr className="my-3" /> */}
-          {/* Heading */}
-          {/* <h6 className="navbar-heading text-muted">Documentation</h6> */}
-          {/* Navigation */}
-          {/* <Nav className="mb-md-3" navbar>
-            <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/overview?ref=adr-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Getting started
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/colors?ref=adr-admin-sidebar">
-                <i className="ni ni-palette" />
-                Foundation
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="https://demos.creative-tim.com/argon-dashboard-react/#/documentation/alerts?ref=adr-admin-sidebar">
-                <i className="ni ni-ui-04" />
-                Components
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="mb-md-3" navbar>
-            <NavItem className="active-pro active">
-              <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=adr-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Upgrade to PRO
-              </NavLink>
-            </NavItem>
-          </Nav> */}
+          
         </Collapse>
       </Container>
     </Navbar>

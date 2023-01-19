@@ -21,27 +21,10 @@ const AdminNavbar = (props) => {
     <>
       <Navbar>
         <Container fluid>
-          {/* <Link
-            className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-            to="/"
-          >
-            {props.brandText}
-          </Link> */}
           <Form>
             <FormGroup row>
-              {/* <Label for="exampleEmail" sm={2}>Email</Label> */}
-              {/* class="fa fa-search" */}
-                <Input type="email" name="email" id="exampleEmail" placeholder="Search" bsSize="lg">
-                  {/* <i class="fa fa-search" aria-hidden="true"/> */}
-                </Input>
-              {/* <InputGroup className="input-group-alternative">
-                <InputGroupAddon addonType="prepend">
-                  <InputGroupText>
-                    <i className="fas fa-search" />
-                  </InputGroupText>
-                </InputGroupAddon>
-                <Input placeholder="Search" type="text" color="black" />
-              </InputGroup> */}
+              <Input type="email" name="email" id="exampleEmail" placeholder="Search" bsSize="lg">
+              </Input>
             </FormGroup>
           </Form>
           <Nav className="align-items-center d-none d-md-flex" navbar>
@@ -56,11 +39,6 @@ const AdminNavbar = (props) => {
                       src={require("../../assets/img/theme/team-4-800x800.jpg")}
                     />
                   </span>
-                  {/* <Media className="ml-2 d-none d-lg-block">
-                    <span className="mb-0 text-sm font-weight-bold">
-                      Jessica Jones
-                    </span>
-                  </Media> */}
                 </Media>
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>
