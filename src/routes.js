@@ -1,27 +1,18 @@
-
-import Index from "views/Index.js";
-import Attendance from "views/examples/Tables.js";
+import Profile from "views/examples/Profile";
+import Register from "views/examples/Register";
 
 var routes = [
   {
-    path: "/index",
-    name: "Dashboard",
-    // icon: "ni ni-search text-primary",
-    component: Index,
-    layout: "/admin"
-  },
-  {
     path: "/inventory",
     name: "Inventory",
-    // icon: "ni ni-planet text-blue",
-    component: Attendance,
+    component: Register,
     layout: "/admin"
   },
   {
-    // path: "/maps",
+    path: "/order",
     name: "Order",
     // icon: "ni ni-pin-3 text-orange",
-    // component: Maps,
+    component: Profile,
     layout: "/admin"
   }
   

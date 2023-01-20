@@ -20,12 +20,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Register = () => {
-  const ref = useRef(null);
-
   const [ items, setItems ] = useState();
   const [ remove, setRemove ] = useState(false);
   const [ edit, setEdit ] = useState(false);
@@ -54,7 +52,7 @@ const Register = () => {
     }
   }
 
-  // let itemList;
+  // Get Orders
   useEffect(async() => {
     await axios({
       method: "get",
@@ -84,6 +82,7 @@ const Register = () => {
     }).then(response => {
         setItem(response.data.data);
     })
+    // window.location.replace("http://localhost:3000/admin/order");
     // console.log(response.data.data);
     // itemList = response.data.data;
   }, [order]);
@@ -161,7 +160,7 @@ const Register = () => {
       } catch(error) {
         console.log(error)
       }
-      window.location.replace("http://localhost:3000/admin/inventory");
+      window.location.replace("http://localhost:3000/admin/order");
     }
     
 
@@ -238,7 +237,6 @@ const Register = () => {
           </CardBody>
         </Card>
       </Col>
-
 
       <Table>
         <thead>
