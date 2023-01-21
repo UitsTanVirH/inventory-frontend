@@ -19,7 +19,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const AdminNavbar = (props) => {
   return (
     <>
-      <Navbar>
+      {/* <Navbar>
         <Container fluid>
           <Form>
             <FormGroup row>
@@ -31,7 +31,7 @@ const AdminNavbar = (props) => {
             <UncontrolledDropdown nav>
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
-                  {/* <p>hw</p> */}
+                  <p>hw</p>
                   <FontAwesomeIcon icon="fa-light fa-calendar-days" />
                   <span className="avatar avatar-sm rounded-circle">
                     <img
@@ -70,7 +70,7 @@ const AdminNavbar = (props) => {
             </UncontrolledDropdown>
           </Nav>
         </Container>
-      </Navbar>
+      </Navbar> */}
     </>
   );
 };

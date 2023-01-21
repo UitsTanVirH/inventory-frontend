@@ -44,15 +44,11 @@ const Sidebar = (props) => {
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
       return (
-        <NavItem key={key}>
+        <NavItem key={prop.path}>
           <NavLink
-            to={prop.layout + prop.path}
-            tag={NavLinkRRD}
-            onClick={closeCollapse}
-            activeClassName="active"
+            href={'http://localhost:3000'+prop.layout + prop.path}
             style={{color:"white"}}
           >
-            <i className={prop.icon} />
             {prop.name}
           </NavLink>
         </NavItem>
@@ -197,7 +193,6 @@ const Sidebar = (props) => {
           </Form>
           {/* Navigation */}
           <Nav navbar>{createLinks(routes)}</Nav>
-          
         </Collapse>
       </Container>
     </Navbar>

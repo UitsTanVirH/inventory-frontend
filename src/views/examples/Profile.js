@@ -1,6 +1,7 @@
 
 import {
-  Table
+  Table,
+  Button
 } from "reactstrap";
 // core components
 
@@ -10,14 +11,18 @@ import axios from 'axios';
 const Profile = () => {
   const [ orders, setOrders ] = useState();
 
-  useEffect(async() => {
-    await axios({
+  useEffect(() => {
+    axios({
       method: "get",
       url: "http://127.0.0.1:8000/api/orders"
     }).then(response => {
         setOrders(response.data.data);
     })
   }, []);
+
+  const handleClick = () => {
+    window.location.href = 'http://localhost:3000/admin/inventory';
+  }
 
   return (
     <>
@@ -38,7 +43,7 @@ const Profile = () => {
                 { 
               orders && orders?.map((order)=>{
                 return (
-                  <tr>
+                  <tr key={order.id}>
                     <td>{ order.name }</td>
                     <td>{ order.quantity }</td>
                     <td>{ order.cost }</td>
@@ -50,6 +55,8 @@ const Profile = () => {
             }
         </tbody>
       </Table>
+      <Button outline color="primary" onClick={handleClick}>Back to Inventory</Button>
+      {/* <button outline color="primary" onClick={handleClick}>Back to Inventory</button> */}
     </>
   );
 };

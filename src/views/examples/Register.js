@@ -32,14 +32,13 @@ const Register = () => {
   const [ order, setOrder ] = useState(false);
   
   const handleSubmit = async(event) => {
-    // store the states in the form data
     const loginFormData = new FormData();
     loginFormData.append("name", formValue.name)
     loginFormData.append("description", formValue.description)
     loginFormData.append("quantity", formValue.quantity)
     loginFormData.append("cost", formValue.cost)
     loginFormData.append("lower_limit", formValue.lower_limit)
-    console.log("Handle Submit")
+
     try {
       // make axios post request
       const response = await axios({
@@ -53,8 +52,8 @@ const Register = () => {
   }
 
   // Get Orders
-  useEffect(async() => {
-    await axios({
+  useEffect(() => {
+    axios({
       method: "get",
       url: "http://127.0.0.1:8000/api/items"
     }).then(response => {
@@ -70,8 +69,6 @@ const Register = () => {
     }).then(response => {
         setItem(response.data.data);
     })
-    // console.log(response.data.data);
-    // itemList = response.data.data;
   }, [edit]);
 
   // Order
@@ -82,9 +79,6 @@ const Register = () => {
     }).then(response => {
         setItem(response.data.data);
     })
-    // window.location.replace("http://localhost:3000/admin/order");
-    // console.log(response.data.data);
-    // itemList = response.data.data;
   }, [order]);
 
   const [formValue, setformValue] = React.useState({
@@ -94,10 +88,6 @@ const Register = () => {
     cost: '',
     lower_limit: '',
   });
-
-  console.log("Item ", item);
-  // console.log(item.name);
-  
 
   const handleDelete = async(id) => {
     //console.log("ID = ", id);
