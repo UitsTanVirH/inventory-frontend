@@ -1,7 +1,10 @@
 
 import {
   Table,
-  Button
+  Button,
+  Row, 
+  Col,
+  Container
 } from "reactstrap";
 // core components
 
@@ -26,37 +29,42 @@ const Profile = () => {
 
   return (
     <>
-      <Table>
-        <thead>
-          <tr>
-            {/* <th>#</th> */}
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Per Cost</th>
-            <th>Created At</th>
-            {/* <th>Status</th> */}
-          </tr>
-        </thead>
+    <Container>
+      <Row>
+        <Col>
+          <Table>
+            <thead>
+              <tr>
+                {/* <th>#</th> */}
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Per Cost</th>
+                <th>Created At</th>
+                {/* <th>Status</th> */}
+              </tr>
+            </thead>
 
-        <tbody>
-            {/* <th scope="row">1</th> */}
-                { 
-              orders && orders?.map((order)=>{
-                return (
-                  <tr key={order.id}>
-                    <td>{ order.name }</td>
-                    <td>{ order.quantity }</td>
-                    <td>{ order.cost }</td>
-                    <td>{ order.created_at }</td>
-                    {/* <td>{ item.status ? "Pending" : "--" }</td> */}
-                  </tr>
-                )
-              })
-            }
-        </tbody>
-      </Table>
-      <Button outline color="primary" onClick={handleClick}>Back to Inventory</Button>
-      {/* <button outline color="primary" onClick={handleClick}>Back to Inventory</button> */}
+            <tbody>
+                {/* <th scope="row">1</th> */}
+                    { 
+                  orders && orders?.map((order)=>{
+                    return (
+                      <tr key={order.id}>
+                        <td>{ order.name }</td>
+                        <td>{ order.quantity }</td>
+                        <td>{ order.cost }</td>
+                        <td>{ order.created_at }</td>
+                        {/* <td>{ item.status ? "Pending" : "--" }</td> */}
+                      </tr>
+                    )
+                  })
+                }
+            </tbody>
+            <Button outline color="primary" onClick={handleClick}>Back to Inventory</Button>
+          </Table>
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 };

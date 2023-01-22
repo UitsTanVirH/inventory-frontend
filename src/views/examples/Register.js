@@ -20,8 +20,9 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faEdit, faCartPlus} from '@fortawesome/free-solid-svg-icons';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
+import emailjs from '@emailjs/browser';
 
 const Register = () => {
   const [ items, setItems ] = useState();
@@ -161,6 +162,19 @@ const Register = () => {
     });
   }
 
+  //Send Email
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_zza263n', 'template_9ffb04u', '#orderForm', 'zf1iENLYXN5c5NpI8')
+      .then((result) => {
+          console.log(result);
+      }, (error) => {
+          console.log(error);
+      });
+  };
+
   return (
     <>
       <Col lg="6" md="8" >
@@ -258,11 +272,11 @@ const Register = () => {
                     {/* <td>{ item.status ? "Pending" : "--" }</td> */}
                     <td> 
 
-                      <span onClick={() => {setEdit(true); setId(item.id)}}><FontAwesomeIcon icon={faEdit} /></span>
+                      <span onClick={() => {setEdit(true); setId(item.id)}} style={{cursor:'pointer'}}><FontAwesomeIcon icon={faEdit} /></span>
                       {" "}
-                      <span onClick={() => handleDelete(item.id)}><FontAwesomeIcon icon={faTrash}/> </span> { " " }
+                      <span onClick={() => handleDelete(item.id)} style={{cursor:'pointer'}}><FontAwesomeIcon icon={faTrash}/> </span> { " " }
 
-                      { item.quantity < item.lower_limit &&  <span onClick={() => {setId(item.id); setOrder(true); handleOrder(item.id)} }><FontAwesomeIcon icon={faCartPlus}/> </span>} 
+                      { item.quantity < item.lower_limit &&  <span onClick={() => {setId(item.id); setOrder(true); handleOrder(item.id)}} style={{cursor:'pointer'}}><FontAwesomeIcon icon={faCartPlus}/> </span>} 
                     </td>
                   </tr>
                 )
@@ -342,7 +356,7 @@ const Register = () => {
       <Modal isOpen={order}>
           <ModalHeader>Order Item</ModalHeader>
           <ModalBody>
-          <Form onSubmit={handleOrder} role="form">
+          <Form onSubmit={handleOrder} role="form" ref={form} id="orderForm">
               <FormGroup>
               <Label for="name">Item Name:</Label>
                 <InputGroup className="input-group-alternative mb-3">
@@ -376,7 +390,7 @@ const Register = () => {
                   Submit
                 </Button>
               </div> */}
-            <Button color="primary" onClick={handleOrder}>Place Order</Button>{' '}
+            <Button color="primary" onClick={(e) => { handleOrder(); sendEmail(e);}}>Place Order</Button>{' '}
             <Button color="secondary" onClick={() => setOrder(false) }>Cancel</Button>
             </Form>
           </ModalBody>
